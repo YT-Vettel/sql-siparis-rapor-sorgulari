@@ -5,11 +5,7 @@ Sorgular, zaman, konum, ürün kategorileri ve müşteri arama işlemlerine gör
 
 📂 Sorgu Listesi
 
-getOrdersByDate.sql: Belirli tarihlere göre siparişleri listeler.
-
 getOrdersByMonthAndDate.sql: Ay ve tarihe göre sipariş özetleri.
-
-getTotalOrdersGroupedByCity.sql: Şehirlere göre toplam siparişler.
 
 getOrderDistributionByProductCategory.sql: Ürün kategorilerine göre sipariş dağılımı.
 
