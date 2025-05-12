@@ -17,6 +17,10 @@ mergeCountriesAndCities.sql: Ülke ve şehir verilerini birleştirir.
 
 searchCustomerByName.sql: Müşteri isimlerine göre arama yapar.
 
+ORDER_ANALYSIS_BY_CITY.sql: Şehirlere göre sipariş adedi ve toplam tutar analizi yapar.
+
+PaymentTypeCategories.sql: Yıla, aya ve ödeme türüne göre toplam ödeme tutarını raporlar.
+
 🛠️ Teknolojiler
 SQL (Standart SQL), MySQL, SQL Server, PostgreSQL uyumlu.
 
