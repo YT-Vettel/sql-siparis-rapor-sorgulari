@@ -1,38 +1,40 @@
-SELECT ITEMNAME, SUM(UNITPRICE) AS TOPLAM_FIYAT, COUNT(*) AS SATIS_ADEDI
+-- List products with sales count at least 4 and calculate total price for each
+SELECT ITEMNAME, SUM(UNITPRICE) AS TOTAL_PRICE, COUNT(*) AS SALES_COUNT
 FROM ITEMS
 GROUP BY ITEMNAME
 HAVING COUNT(*) >= 4
-ORDER BY SATIS_ADEDI DESC;
--- satýþ adedi en az 4 olan ürünler listenir ve her birinin toplam fiyatý hesaplanýr.
+ORDER BY SALES_COUNT DESC;
 
--- SUM() fonksiyonu, bir veri kümesindeki belirli bir sütunun toplamlarýný toplamak için kullanýlýr.
+-- SUM() function is used to add up values in a column over a dataset.
 
-SELECT ITEMNAME, COUNT(ITEMCODE) AS adet
+-- Count the number of sales per product (most sold products)
+SELECT ITEMNAME, COUNT(ITEMCODE) AS QUANTITY
 FROM ITEMS
 GROUP BY ITEMNAME
-ORDER BY adet DESC;
---Örneðin en çok satýlan veya ürünler
--- Temel alýnan sorgudaki kayýt sayýsýný saymak için Count kullanabilirsiniz. 
+ORDER BY QUANTITY DESC;
 
+-- Example: to find the best-selling products, use COUNT to count records.
+
+-- Get country, user full name, and order date
 SELECT
-    COUNTRIES.COUNTRY AS ÜLKE,
-    USERS.NAMESURNAME AS ADSOYAD,
-    ORDERS.DATE_ AS SÝPARÝÞTARÝHÝ
-FROM 
-    ORDERS
-JOIN 
-    USERS ON ORDERS.USERID = USERS.ID
-JOIN 
-    COUNTRIES ON USERS.COUNTRYID = COUNTRIES.ID;
+    COUNTRIES.COUNTRY AS COUNTRY,
+    USERS.NAMESURNAME AS FULL_NAME,
+    ORDERS.DATE_ AS ORDER_DATE
+FROM ORDERS
+JOIN USERS ON ORDERS.USERID = USERS.ID
+JOIN COUNTRIES ON USERS.COUNTRYID = COUNTRIES.ID;
 
-
+-- Set COUNTRYID to NULL for a user with specific ID
 UPDATE USERS
 SET COUNTRYID = NULL
 WHERE ID = '9679';
--- Ýçini null yapma kodu.
 
-DELETE USERS WHERE ID = '9679';
--- Verilen ýd'yi silme kodu.
+-- Delete user with specific ID
+DELETE FROM USERS
+WHERE ID = '9679';
 
-SELECT * FROM USERS
-SELECT * FROM CITIES
+-- Select all users
+SELECT * FROM USERS;
+
+-- Select all cities
+SELECT * FROM CITIES;
