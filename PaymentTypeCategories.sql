@@ -1,25 +1,25 @@
--- ÖDEME TÜRÜNE GÖRE DAÐILIM
+-- DISTRIBUTION BY PAYMENT TYPE
 
 SELECT
-    DATEPART(YEAR, DATE_) AS YIL,             -- Sipariþ tarihinden yýlý alýr ve "YIL" olarak isimlendirir.
-    DATEPART(MONTH, DATE_) AS AY,             -- Sipariþ tarihinden ayý alýr ve "AY" olarak isimlendirir.
+    DATEPART(YEAR, DATE_) AS YEAR,                -- Extracts the year from the order date and names it "YEAR"
+    DATEPART(MONTH, DATE_) AS MONTH,               -- Extracts the month from the order date and names it "MONTH"
 
     CASE
-        WHEN PAYMENTTYPE = 1 THEN 'KREDÝ KARTI'       -- PAYMENTTYPE 1 ise "KREDÝ KARTI" olarak göster
-        WHEN PAYMENTTYPE = 2 THEN 'BANKA HAVALESÝ'    -- PAYMENTTYPE 2 ise "BANKA HAVALESÝ" olarak göster
-    END AS ODEMETURU_ACIKLAMA,              -- CASE sonucu "ODEMETURU_ACIKLAMA" sütunu olarak adlandýrýlýr
+        WHEN PAYMENTTYPE = 1 THEN 'CREDIT CARD'           -- If PAYMENTTYPE is 1, show as "CREDIT CARD"
+        WHEN PAYMENTTYPE = 2 THEN 'BANK TRANSFER'          -- If PAYMENTTYPE is 2, show as "BANK TRANSFER"
+    END AS PAYMENT_TYPE_DESCRIPTION,               -- The CASE result is named "PAYMENT_TYPE_DESCRIPTION"
 
-    SUM(PAYMENTTOTAL) AS TOPLAMTUTAR        -- Ayný yýl, ay ve ödeme türündeki toplam ödeme tutarýný hesaplar
+    SUM(PAYMENTTOTAL) AS TOTAL_AMOUNT               -- Calculates the total payment amount for the same year, month, and payment type
 
-FROM PAYMENTS                                -- Veriler "PAYMENTS" tablosundan alýnýr
+FROM PAYMENTS                                      -- Data is taken from the "PAYMENTS" table
 
--- Yýl, ay ve ödeme türüne göre gruplanýr (bu þekilde toplam alýnabilir)
+-- Grouped by year, month, and payment type (to get totals)
 GROUP BY
     DATEPART(MONTH, DATE_),
     DATEPART(YEAR, DATE_),
     PAYMENTTYPE
 
--- Sonuçlarý önce aya, sonra yýla göre sýralar (örneðin Ocak aylarý en üstte olur)
+-- Orders results first by month, then by year (e.g., January appears at the top)
 ORDER BY
     DATEPART(MONTH, DATE_),
     DATEPART(YEAR, DATE_)
