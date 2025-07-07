@@ -1,31 +1,36 @@
-# sql-siparis-rapor-sorgulari
+# SQL Order Report Queries
 
-Bu depo, sipariş verilerinden raporlar ve analizler oluşturmayı amaçlayan SQL sorguları içerir. 
-Sorgular, zaman, konum, ürün kategorileri ve müşteri arama işlemlerine göre gruplanmıştır.
+This repository contains SQL queries designed to generate reports and analyses from order data.  
+Queries are organized by time, location, product categories, and customer search functionalities.
 
-📂 Sorgu Listesi
+---
 
-getOrdersByMonthAndDate.sql: Ay ve tarihe göre sipariş özetleri.
+## 📂 Query List
 
-getOrderDistributionByProductCategory.sql: Ürün kategorilerine göre sipariş dağılımı.
+| File Name                         | Description                                     |
+|----------------------------------|------------------------------------------------|
+| `getOrdersByMonthAndDate.sql`    | Summarizes orders by month and date             |
+| `getOrderDistributionByProductCategory.sql` | Distribution of orders by product categories  |
+| `mergeCountriesAndCities.sql`    | Merges country and city data                     |
+| `searchCustomerByName.sql`       | Searches customers by name                       |
+| `ORDER_ANALYSIS_BY_CITY.sql`     | Analyzes order count and total amount by city   |
+| `PaymentTypeCategories.sql`      | Reports total payment amounts by year, month, and payment type |
 
-mergeCountriesAndCities.sql: Ülke ve şehir verilerini birleştirir.
+---
 
-searchCustomerByName.sql: Müşteri isimlerine göre arama yapar.
+## 🛠️ Technologies
 
-ORDER_ANALYSIS_BY_CITY.sql: Şehirlere göre sipariş adedi ve toplam tutar analizi yapar.
+- SQL (Standard SQL)  
+- Compatible with MySQL, SQL Server, PostgreSQL
 
-PaymentTypeCategories.sql: Yıla, aya ve ödeme türüne göre toplam ödeme tutarını raporlar.
+---
 
-🛠️ Teknolojiler
-SQL (Standart SQL), MySQL, SQL Server, PostgreSQL uyumlu.
+## 📌 Purpose
 
-📌 Amaç
+- Learning SQL reporting  
+- Building dashboards  
+- Developing database analytics
 
-SQL raporlama öğrenme
+---
 
-Gösterge panoları oluşturma
-
-Veritabanı analitiği geliştirme
-
-Çoğaltabilir ve katkıda bulunabilirsiniz!
+Feel free to fork and contribute!  
